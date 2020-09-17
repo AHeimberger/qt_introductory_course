@@ -1,0 +1,43 @@
+{
+   "coord":{
+      "lon":8.31,
+      "lat":47.05
+   },
+   "weather":[
+      {
+         "id":802,
+         "main":"Clouds",
+         "description":"scattered clouds",
+         "icon":"03n"
+      }
+   ],
+   "base":"stations",
+   "main":{
+      "temp":19.92,
+      "feels_like":20.77,
+      "temp_min":19,
+      "temp_max":21,
+      "pressure":1021,
+      "humidity":77
+   },
+   "visibility":10000,
+   "wind":{
+      "speed":1.5,
+      "deg":20
+   },
+   "clouds":{
+      "all":38
+   },
+   "dt":1600380658,
+   "sys":{
+      "type":1,
+      "id":6933,
+      "country":"CH",
+      "sunrise":1600405721,
+      "sunset":1600450384
+   },
+   "timezone":7200,
+   "id":2659811,
+   "name":"Lucerne",
+   "cod":200
+}

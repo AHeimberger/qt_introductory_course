@@ -1,0 +1,6 @@
+preparation
+documentation
+deploy
+
+*.txt.user
+.vscode

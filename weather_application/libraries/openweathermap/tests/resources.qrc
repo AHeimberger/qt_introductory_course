@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>day.json</file>
+        <file>forecast.json</file>
+        <file>invalid_appid.json</file>
+    </qresource>
+</RCC>

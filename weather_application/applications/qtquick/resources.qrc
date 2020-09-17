@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="settings/menu.svg">qrc/menu.svg</file>
+        <file alias="weather/unknown.svg">qrc/unknown.svg</file>
+
+        <file alias="weather/few-clouds.svg">qrc/icons/weather-few-clouds.svg</file>
+        <file alias="weather/fog.svg">qrc/icons/weather-fog.svg</file>
+        <file alias="weather/haze.svg">qrc/icons/weather-haze.svg</file>
+        <file alias="weather/icy.svg">qrc/icons/weather-icy.svg</file>
+        <file alias="weather/overcast.svg">qrc/icons/weather-overcast.svg</file>
+        <file alias="weather/showers.svg">qrc/icons/weather-showers.svg</file>
+        <file alias="weather/sleet.svg">qrc/icons/weather-sleet.svg</file>
+        <file alias="weather/snow.svg">qrc/icons/weather-snow.svg</file>
+        <file alias="weather/storm.svg">qrc/icons/weather-storm.svg</file>
+        <file alias="weather/sunny.svg">qrc/icons/weather-sunny.svg</file>
+        <file alias="weather/sunny-very-few-clouds.svg">qrc/icons/weather-sunny-very-few-clouds.svg</file>
+        <file alias="weather/thundershower.svg">qrc/icons/weather-thundershower.svg</file>
+
+        <file alias="qml/Main.qml">qrc/qml/Main.qml</file>
+        <file alias="qml/ForecastWeatherItem.qml">qrc/qml/ForecastWeatherItem.qml</file>
+        <file alias="qml/SettingsMenu.qml">qrc/qml/SettingsMenu.qml</file>
+        <file alias="qml/Line.qml">qrc/qml/Line.qml</file>
+        <file alias="qml/SelectionBackground.qml">qrc/qml/SelectionBackground.qml</file>
+        <file alias="qml/TodayWeatherItem.qml">qrc/qml/TodayWeatherItem.qml</file>
+        <file alias="qml/ScaledImage.qml">qrc/qml/ScaledImage.qml</file>
+        <file alias="qml/ViewWeather.qml">qrc/qml/ViewWeather.qml</file>
+        <file alias="qml/ViewSettings.qml">qrc/qml/ViewSettings.qml</file>
+    </qresource>
+</RCC>

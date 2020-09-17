@@ -1,0 +1,48 @@
+* {
+    font-size: #MED_FONT_SIZE#;
+    font-family: #COMMON_FONT_FAMILY#;
+    color: #COMMON_FONT_COLOR#;
+}
+
+QPushButton:pressed {
+    color: #WHITE#;
+    background-color: #SILVER#;
+    padding-top:  2px;
+    padding-left: 3px;
+}
+
+WidgetContent {
+    background: #WHITE#;
+    padding: 20px;
+}
+
+WidgetContent QPushButton {
+    max-width:  40px;
+    min-height: 24px;
+}
+
+WidgetToday QLabel#temperature {
+    font-size: #BIG_FONT_SIZE#;
+}
+
+WidgetToday QLabel#weather {
+    font-size: #MED_FONT_SIZE#;
+    font-weight: bold;
+}
+
+WidgetForecastItem QLabel {
+    font-size: #SMALL_FONT_SIZE#;
+}
+
+WidgetSettings {
+    background: #WHITE_SMOKE#;
+}
+
+WidgetSettings QFrame#widgetSettings {
+    margin: 12px;
+}
+
+WidgetSettings QPushButton {
+    min-width: 120px;
+    min-height: 24px;
+}
