@@ -2,6 +2,8 @@
 #include <QCoreApplication>
 #include <QSettings>
 
+namespace BusinessLogic {
+
 Settings::Settings() :
     _settings_file(QCoreApplication::applicationDirPath() + "/settings.ini")
 {
@@ -88,3 +90,5 @@ void Settings::storeSettings() {
 
     settings.sync();
 }
+
+} // namespace BusinessLogic

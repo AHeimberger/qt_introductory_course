@@ -78,7 +78,7 @@ void WidgetContent::selectionChanged(const QString& selected_city)
     emit locationChanged(selected_city);
 }
 
-void WidgetContent::setModel(ModelToday *model)
+void WidgetContent::setModel(BusinessLogic::ModelToday *model)
 {
     _today_widget->setModel(model);
 }
@@ -88,7 +88,7 @@ void WidgetContent::setModel(QStringListModel *model)
     _combobox_location->setModel(model);
 }
 
-void WidgetContent::setModel(ModelForecast *model)
+void WidgetContent::setModel(BusinessLogic::ModelForecast *model)
 {
     for (int index = 0; index < FORECAST_ITEM_COUNT; ++index) {
         _items_forecast[index]->setModel(model, index + 1);

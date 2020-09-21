@@ -4,6 +4,8 @@
 #include <QAbstractListModel>
 #include "replies.h"
 
+namespace BusinessLogic {
+
 class ModelForecast: public QAbstractListModel
 {
     Q_OBJECT
@@ -25,5 +27,7 @@ public slots:
 private:
     OpenWeatherMap::Replies::Data::CurrentAndForecast _currentForecast;
 };
+
+} // namespace BusinessLogic
 
 #endif // MODEL_FORECAST_H

@@ -11,9 +11,11 @@ class QPushButton;
 class QStringListModel;
 class QListView;
 class WidgetToday;
+class WidgetForecastItem;
+namespace BusinessLogic {
 class ModelToday;
 class ModelForecast;
-class WidgetForecastItem;
+} // namespace BusinessLogic
 
 
 class WidgetContent : public QWidget
@@ -23,8 +25,8 @@ class WidgetContent : public QWidget
 public:
     explicit WidgetContent(QWidget *parent = nullptr);
 
-    void setModel(ModelToday* model);
-    void setModel(ModelForecast *model);
+    void setModel(BusinessLogic::ModelToday* model);
+    void setModel(BusinessLogic::ModelForecast *model);
     void setModel(QStringListModel* model);
 
 protected:

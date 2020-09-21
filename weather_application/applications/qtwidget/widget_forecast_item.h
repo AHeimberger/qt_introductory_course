@@ -6,7 +6,9 @@
 class QLabel;
 class LabelAspectRatio;
 class WeatherForecastModel;
+namespace BusinessLogic {
 class ModelForecast;
+}
 
 class WidgetForecastItem : public QWidget
 {
@@ -15,7 +17,7 @@ class WidgetForecastItem : public QWidget
 public:
     explicit WidgetForecastItem(QWidget *parent = nullptr);
 
-    void setModel(ModelForecast *model, int row);
+    void setModel(BusinessLogic::ModelForecast *model, int row);
 
 protected:
     void paintEvent(QPaintEvent *) override;
@@ -27,7 +29,7 @@ private:
     QLabel* dayLabel = nullptr;
     LabelAspectRatio* weatherIcon = nullptr;
     QLabel* temperature = nullptr;
-    ModelForecast *_model = nullptr;
+    BusinessLogic::ModelForecast *_model = nullptr;
     int _row = -1;
 };
 

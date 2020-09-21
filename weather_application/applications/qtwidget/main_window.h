@@ -6,12 +6,13 @@
 class WidgetContent;
 class WidgetSettings;
 class QTranslator;
-class Settings;
-class WeatherController;
-class ModelToday;
-class ModelForecast;
 class QStringListModel;
-
+namespace BusinessLogic {
+    class Settings;
+    class WeatherController;
+    class ModelToday;
+    class ModelForecast;
+}
 
 class MainWindow : public QMainWindow
 {
@@ -31,16 +32,16 @@ private slots:
     void showSettingsDialog();
 
 private:
-    Settings *_settings = nullptr;
     WidgetContent* _content_widget = nullptr;
     WidgetSettings* _settings_dialog = nullptr;
     QTranslator* _translator = nullptr;
-    WeatherController* _weather_controller = nullptr;
-    ModelToday* _model_today = nullptr;
-    ModelForecast* _model_forecast = nullptr;
     QStringListModel* _location_list_model = nullptr;
     QString _settings_file;
     QString _language;
+    BusinessLogic::Settings *_settings = nullptr;
+    BusinessLogic::WeatherController *_weather_controller = nullptr;
+    BusinessLogic::ModelToday *_model_today = nullptr;
+    BusinessLogic::ModelForecast *_model_forecast = nullptr;
 };
 
 #endif // MAINWINDOW_H

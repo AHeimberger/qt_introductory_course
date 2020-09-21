@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     int status = 0;
     auto runTest = [&status, argc, argv](QObject* obj) {
         QString objectName = obj->objectName();
-        qDebug() << "\n\e[32mStart test:\e[0m" << obj->objectName();
+        qDebug() << "\nStart test:" << obj->objectName();
 
         QStringList arguments;
         for (int i = 0; i < argc; i++) {

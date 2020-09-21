@@ -23,21 +23,21 @@ int Application::start(int argc, char *argv[]) {
     QCoreApplication::setApplicationName("QtQuick Application");
     QCoreApplication::setApplicationVersion(OPENWEATHERMAP_LIBRARY_VERSION);
 
-    WeatherController weather;
+    BusinessLogic::WeatherController weather;
     weather.setAppId(OPENWEATHERMAP_APPID);
     weather.setLocation("Luzern");
 
-    Settings settings;
-    ModelToday modelToday;
-    ModelForecast modelForecast;
+    BusinessLogic::Settings settings;
+    BusinessLogic::ModelToday modelToday;
+    BusinessLogic::ModelForecast modelForecast;
 
-    QObject::connect(&settings, &Settings::locationChanged, [&](){
+    QObject::connect(&settings, &BusinessLogic::Settings::locationChanged, [&](){
         weather.setLocation(settings.getLocation());
         weather.requestCurrentWeatherByCityName();
     });
-    QObject::connect(&weather, &WeatherController::weatherChanged, &modelToday, &ModelToday::onWeatherChanged, Qt::UniqueConnection);
-    QObject::connect(&weather, &WeatherController::forecastChanged, &modelForecast, &ModelForecast::onForecastChanged, Qt::UniqueConnection);
-    QObject::connect(&weather, &WeatherController::weatherChanged, [&](){
+    QObject::connect(&weather, &BusinessLogic::WeatherController::weatherChanged, &modelToday, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
+    QObject::connect(&weather, &BusinessLogic::WeatherController::forecastChanged, &modelForecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
+    QObject::connect(&weather, &BusinessLogic::WeatherController::weatherChanged, [&](){
         weather.requestCurrentAndForecastWeatherData();
     });
 

@@ -4,6 +4,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
+namespace BusinessLogic {
 
 WeatherController::WeatherController() :
     _location(),
@@ -90,3 +91,5 @@ void WeatherController::replyFinished(QNetworkReply *reply) {
         emit forecastChanged(_weathers);
     }
 }
+
+} // namespace BusinessLogic

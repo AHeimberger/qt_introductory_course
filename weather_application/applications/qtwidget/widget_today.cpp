@@ -49,11 +49,11 @@ WidgetToday::WidgetToday(QWidget *parent)
 }
 
 
-void WidgetToday::setModel(ModelToday *model)
+void WidgetToday::setModel(BusinessLogic::ModelToday *model)
 {
     _model = model;
 
-    QObject::connect(model, &ModelToday::weatherChanged, this, &WidgetToday::updateFields, Qt::UniqueConnection);
+    QObject::connect(model, &BusinessLogic::ModelToday::weatherChanged, this, &WidgetToday::updateFields, Qt::UniqueConnection);
 
     updateFields();
 }

@@ -45,12 +45,12 @@ WidgetForecastItem::WidgetForecastItem(QWidget *parent)
     setLayout(vlayout);
 }
 
-void WidgetForecastItem::setModel(ModelForecast *model, int row)
+void WidgetForecastItem::setModel(BusinessLogic::ModelForecast *model, int row)
 {
     _model = model;
     _row = row;
 
-    QObject::connect(model, &ModelForecast::dataChanged, this, &WidgetForecastItem::updateFields, Qt::UniqueConnection);
+    QObject::connect(model, &BusinessLogic::ModelForecast::dataChanged, this, &WidgetForecastItem::updateFields, Qt::UniqueConnection);
 
     updateFields();
 }
@@ -61,22 +61,23 @@ void WidgetForecastItem::updateFields()
     if (!index.isValid())
         return;
 
-    temperature->setText(_model->data(index, ModelForecast::Roles::TemperatureRange).value<QString>());
+    temperature->setText(_model->data(index, BusinessLogic::ModelForecast::Roles::TemperatureRange).value<QString>());
 
-    QSvgRenderer renderer(QString(":/weather/%1.svg").arg(_model->data(index, ModelForecast::Roles::Icon).value<QString>()));
+    QSvgRenderer renderer(QString(":/weather/%1.svg").arg(_model->data(index, BusinessLogic::ModelForecast::Roles::Icon).value<QString>()));
     QPixmap pm(100, 100);
     pm.fill(Qt::transparent);
     QPainter painter(&pm);
     renderer.render(&painter, pm.rect());
     weatherIcon->setPixmap(pm);
 
-    dayLabel->setText(_model->data(index, ModelForecast::Roles::Day).value<QString>());
+    dayLabel->setText(_model->data(index, BusinessLogic::ModelForecast::Roles::Day).value<QString>());
 }
 
 void WidgetForecastItem::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;
     opt.init(this);
+
     QPainter p(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }

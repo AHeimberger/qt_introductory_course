@@ -1,9 +1,10 @@
 #include "model_today.h"
 #include "icon_mappings.h"
 
+namespace BusinessLogic {
+
 ModelToday::ModelToday()
 {
-
 }
 
 QString ModelToday::getCity(){
@@ -26,3 +27,5 @@ void ModelToday::onWeatherChanged(const OpenWeatherMap::Replies::Data::CurrentWe
     _currentWeather = currentWeather;
     emit weatherChanged();
 }
+
+} // namespace BusinessLogic

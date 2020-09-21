@@ -8,6 +8,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
+namespace BusinessLogic {
+
 class WeatherController : public QObject {
     Q_OBJECT
 
@@ -40,7 +42,7 @@ private slots:
 
 private:
     OpenWeatherMap::Requests::DefaultQueryParams _defaultQueryParams;
-    QString _location;
+    QString _location = "";
 
     QNetworkAccessManager *_manager = nullptr;
     QNetworkReply* _reply_current_weather = nullptr;
@@ -50,5 +52,7 @@ private:
     OpenWeatherMap::Replies::Data::CurrentWeather _weather;
     OpenWeatherMap::Replies::Data::CurrentAndForecast _weathers;
 };
+
+} // namespace BusinessLogic
 
 #endif // WEATHER_H

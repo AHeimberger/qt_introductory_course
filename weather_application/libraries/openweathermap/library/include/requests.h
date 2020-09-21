@@ -57,12 +57,12 @@ public:
 
 namespace Requests {
 
-typedef struct {
+struct DefaultQueryParams {
     QString _app_id = "";
-    Enums::Formats _format = Enums::Formats::json;
-    Enums::Units _units = Enums::Units::celcius;
-    Enums::Languages _languages = Enums::Languages::english;
-} DefaultQueryParams;
+    Enums::Formats _format = OpenWeatherMap::Enums::Formats::json;
+    Enums::Units _units = OpenWeatherMap::Enums::Units::celcius;
+    Enums::Languages _languages = OpenWeatherMap::Enums::Languages::english;
+};
 
 // Current Weather Data :: https://openweathermap.org/current
 

@@ -32,16 +32,16 @@ int main(int argc, char *argv[])
     QString cityName = positionalArguments.first();
     bool isForecast = parser.isSet("forecast");
 
-    WeatherController weather;
+    BusinessLogic::WeatherController weather;
     weather.setAppId(OPENWEATHERMAP_APPID);
     weather.setLocation(cityName);
 
-    QObject::connect(&weather, &WeatherController::weatherChanged, [&](const OpenWeatherMap::Replies::Data::CurrentWeather &weather){
+    QObject::connect(&weather, &BusinessLogic::WeatherController::weatherChanged, [&](const OpenWeatherMap::Replies::Data::CurrentWeather &weather){
         qDebug().noquote() << "Showing weather for:" << cityName;
-        qDebug().noquote() << weather._timezone;
+        qDebug().noquote() << weather._time_zone;
     });
 
-    QObject::connect(&weather, &WeatherController::forecastChanged, [&](const OpenWeatherMap::Replies::Data::CurrentAndForecast &currentAndForecast){
+    QObject::connect(&weather, &BusinessLogic::WeatherController::forecastChanged, [&](const OpenWeatherMap::Replies::Data::CurrentAndForecast &currentAndForecast){
         qDebug().noquote() << "Showing forecast for:" << cityName;
          qDebug().noquote() << currentAndForecast._daily.size();
     });

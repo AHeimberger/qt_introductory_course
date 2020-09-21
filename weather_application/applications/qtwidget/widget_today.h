@@ -5,7 +5,9 @@
 
 class QLabel;
 class LabelAspectRatio;
+namespace BusinessLogic {
 class ModelToday;
+}
 
 class WidgetToday : public QWidget
 {
@@ -13,7 +15,7 @@ class WidgetToday : public QWidget
 
 public:
     explicit WidgetToday(QWidget *parent = nullptr);
-    void setModel(ModelToday* model);
+    void setModel(BusinessLogic::ModelToday* model);
 
 protected:
     void paintEvent(QPaintEvent *) override;
@@ -22,7 +24,7 @@ protected slots:
     void updateFields();
 
 private:
-    ModelToday *_model = nullptr;
+    BusinessLogic::ModelToday *_model = nullptr;
     QLabel* _temperature_text = nullptr;
     LabelAspectRatio* _weather_icon = nullptr;
     QLabel* _weather_text = nullptr;

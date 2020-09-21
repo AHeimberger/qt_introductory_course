@@ -54,7 +54,7 @@ void TestReplies::test_currentWeather_expect_correctly_filled_structure() {
     QCOMPARE(testee._sys._country, "CH");
     QCOMPARE(testee._sys._sunrise, QDateTime::fromString("2020/09/18T07:08:41.000", Qt::ISODate));
     QCOMPARE(testee._sys._sunset, QDateTime::fromString("2020/09/18T19:33:04.000", Qt::ISODate));
-    QCOMPARE(testee._timezone, 7200);
+    QCOMPARE(testee._time_zone, 7200);
     QCOMPARE(testee._id, 2659811);
     QCOMPARE(testee._name, "Lucerne");
     QCOMPARE(testee._cod, 200);
@@ -73,7 +73,7 @@ void TestReplies::test_currentWeathers_expect_correctly_filled_structure() {
 
     QCOMPARE(testee._lat, 0);
     QCOMPARE(testee._lon, 0);
-    QCOMPARE(testee._timezone, "Etc/GMT");
+    QCOMPARE(testee._time_zone, "Etc/GMT");
     QCOMPARE(testee._timezon_offset, 0);
     QCOMPARE(testee._daily.size(), 8);
 }

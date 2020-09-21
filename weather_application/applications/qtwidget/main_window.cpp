@@ -19,10 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     _settings_file(QApplication::applicationDirPath() + "/settings.ini")
 {
-    _settings = new Settings();
-    _weather_controller = new WeatherController();
-    _model_today = new ModelToday();
-    _model_forecast = new ModelForecast();
+    _settings = new BusinessLogic::Settings();
+    _weather_controller = new BusinessLogic::WeatherController();
+    _model_today = new BusinessLogic::ModelToday();
+    _model_forecast = new BusinessLogic::ModelForecast();
     _location_list_model = new QStringListModel();
     _content_widget = new WidgetContent(this);
     _settings_dialog = new WidgetSettings(this);
@@ -37,17 +37,17 @@ MainWindow::MainWindow(QWidget *parent)
     _weather_controller->setLocation("Luzern");
 
     // widget
-    QObject::connect(_content_widget, &WidgetContent::locationChanged, _settings, &Settings::setLocation, Qt::UniqueConnection);
+    QObject::connect(_content_widget, &WidgetContent::locationChanged, _settings, &BusinessLogic::Settings::setLocation, Qt::UniqueConnection);
     QObject::connect(_content_widget, &WidgetContent::showSettingsDialog, this, &MainWindow::showSettingsDialog, Qt::UniqueConnection);
-    QObject::connect(_settings, &Settings::locationChanged, [&](){
+    QObject::connect(_settings, &BusinessLogic::Settings::locationChanged, [&](){
         _weather_controller->setLocation(_settings->getLocation());
         _weather_controller->requestCurrentWeatherByCityName();
     });
 
     // controller
-    QObject::connect(_weather_controller, &WeatherController::weatherChanged, _model_today, &ModelToday::onWeatherChanged, Qt::UniqueConnection);
-    QObject::connect(_weather_controller, &WeatherController::forecastChanged, _model_forecast, &ModelForecast::onForecastChanged, Qt::UniqueConnection);
-    QObject::connect(_weather_controller, &WeatherController::weatherChanged, [&](){
+    QObject::connect(_weather_controller, &BusinessLogic::WeatherController::weatherChanged, _model_today, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
+    QObject::connect(_weather_controller, &BusinessLogic::WeatherController::forecastChanged, _model_forecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
+    QObject::connect(_weather_controller, &BusinessLogic::WeatherController::weatherChanged, [&](){
         _weather_controller->requestCurrentAndForecastWeatherData();
     });
 

@@ -1,6 +1,8 @@
 project(businesslogiclib VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 set(YOUR_OPENWEATHERMAP_APPID "YOUR_OPPENWEATHERMAP_APPID" CACHE STRING "Add your open weathermap appid")
 
 find_package(Qt5
@@ -27,4 +29,3 @@ target_link_libraries(businesslogiclib
 
 target_compile_definitions(businesslogiclib
     PUBLIC OPENWEATHERMAP_APPID="${YOUR_OPENWEATHERMAP_APPID}")
-

@@ -3,13 +3,15 @@
 #include <QLocale>
 #include <QDebug>
 
+namespace BusinessLogic {
+
 ModelForecast::ModelForecast(){
 }
 
 int ModelForecast::rowCount(const QModelIndex &parent) const {
     Q_UNUSED(parent)
 
-    return _currentForecast._daily.size();
+    return static_cast<int>(_currentForecast._daily.size());
 }
 
 QVariant ModelForecast::data(const QModelIndex &index, int role) const {
@@ -59,6 +61,8 @@ void ModelForecast::onForecastChanged(const OpenWeatherMap::Replies::Data::Curre
     // todo: works for qtwidget, because contains 4 static elements
     _currentForecast = currentForecast;
     auto topLeft = createIndex(0, 0);
-    auto bottomRight = createIndex(_currentForecast._daily.size(), 1);
+    auto bottomRight = createIndex(static_cast<int>(_currentForecast._daily.size()), 1);
     emit dataChanged(topLeft, bottomRight);
 }
+
+} // namespace BusinessLogic

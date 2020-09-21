@@ -4,6 +4,8 @@
 #include <QObject>
 #include "replies.h"
 
+namespace BusinessLogic {
+
 class ModelToday : public QObject
 {
     Q_OBJECT
@@ -31,5 +33,7 @@ public slots:
 private:
     OpenWeatherMap::Replies::Data::CurrentWeather _currentWeather;
 };
+
+} // namespace BusinessLogic
 
 #endif // MODEL_TODAY_H

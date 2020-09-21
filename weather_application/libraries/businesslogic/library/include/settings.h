@@ -5,6 +5,8 @@
 #include <QString>
 #include <QStringListModel>
 
+namespace BusinessLogic {
+
 class Settings: public QObject
 {
     Q_OBJECT
@@ -46,5 +48,7 @@ private:
     QString _location;
     QString _language;
 };
+
+} // namespace BusinessLogic
 
 #endif // SETTINGS_H

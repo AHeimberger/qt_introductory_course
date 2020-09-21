@@ -61,14 +61,14 @@ struct CurrentWeather {
     Clouds _clouds;
     QDateTime _dt;
     Sys _sys;
-    int _timezone;
+    int _time_zone;
     int _id;
     QString _name;
     int _cod;
 };
 
 struct CurrentAndForecast {
-    typedef struct {
+    typedef struct Daily {
         typedef struct {
             double _day;
             double _min;
@@ -111,7 +111,7 @@ struct CurrentAndForecast {
 
     int _lat;
     int _lon;
-    QString _timezone;
+    QString _time_zone;
     int _timezon_offset;
     // _current
     // _hourly
