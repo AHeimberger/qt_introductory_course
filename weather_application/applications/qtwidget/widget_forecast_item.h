@@ -26,9 +26,9 @@ protected slots:
     void updateFields();
 
 private:
-    QLabel* dayLabel = nullptr;
-    LabelAspectRatio* weatherIcon = nullptr;
-    QLabel* temperature = nullptr;
+    QLabel* _day_label = nullptr;
+    LabelAspectRatio* _weather_icon = nullptr;
+    QLabel* _temperature = nullptr;
     BusinessLogic::ModelForecast *_model = nullptr;
     int _row = -1;
 };

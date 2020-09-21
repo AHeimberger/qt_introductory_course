@@ -25,9 +25,11 @@ ColumnLayout {
         Layout.fillHeight: true
         Layout.minimumHeight: 300
         Layout.fillWidth: true
+        city: cppModelToday.city
         temperature: cppModelToday.temperature
         icon: "qrc:///weather/" + cppModelToday.icon + ".svg"
         description: cppModelToday.description
+        date: cppModelToday.date
     }
 
     Line {

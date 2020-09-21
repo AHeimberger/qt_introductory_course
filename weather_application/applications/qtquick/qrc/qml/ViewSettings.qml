@@ -13,6 +13,18 @@ Item {
 
         Text {
             Layout.fillWidth: true
+            text: "Application ID:"
+        }
+
+        TextArea {
+            id: appId
+            Layout.fillWidth: true
+            text: cppSettings.appId
+            background: SelectionBackground {}
+        }
+
+        Text {
+            Layout.fillWidth: true
             text: "Locations:"
         }
 
@@ -45,6 +57,7 @@ Item {
                 text: "OK"
                 background: SelectionBackground {}
                 onClicked: {
+                    cppSettings.appId = appId.text
                     cppSettings.locations = locations.text
                     cppSettings.language = languages.currentText
                     viewSettings.okClicked()
@@ -56,6 +69,7 @@ Item {
                 text: "CANCEL"
                 background: SelectionBackground {}
                 onClicked: {
+                    appId.text = cppSettings.appId
                     locations.text = cppSettings.locations
                     cppSettings.language = languages.currentText
                     viewSettings.cancelClicked()

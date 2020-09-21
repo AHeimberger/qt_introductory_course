@@ -7,8 +7,8 @@ LabelAspectRatio::LabelAspectRatio(QWidget* parent, Qt::WindowFlags f)
 
 void LabelAspectRatio::setPixmap(const QPixmap& pm)
 {
-    pixmap_width = pm.width();
-    pixmap_height = pm.height();
+    _pixmap_width = pm.width();
+    _pixmap_height = pm.height();
 
     updateMargins();
     QLabel::setPixmap(pm);
@@ -22,7 +22,7 @@ void LabelAspectRatio::resizeEvent(QResizeEvent* event)
 
 void LabelAspectRatio::updateMargins()
 {
-    if (pixmap_width <= 0 || pixmap_height <= 0)
+    if (_pixmap_width <= 0 || _pixmap_height <= 0)
         return;
 
     int w = this->width();
@@ -31,14 +31,14 @@ void LabelAspectRatio::updateMargins()
     if (w <= 0 || h <= 0)
         return;
 
-    if (w * pixmap_height > h * pixmap_width)
+    if (w * _pixmap_height > h * _pixmap_width)
     {
-        int m = (w - (pixmap_width * h / pixmap_height)) / 2;
+        int m = (w - (_pixmap_width * h / _pixmap_height)) / 2;
         setContentsMargins(m, 0, m, 0);
     }
     else
     {
-        int m = (h - (pixmap_height * w / pixmap_width)) / 2;
+        int m = (h - (_pixmap_height * w / _pixmap_width)) / 2;
         setContentsMargins(0, m, 0, m);
     }
 }

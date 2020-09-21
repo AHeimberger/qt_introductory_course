@@ -23,6 +23,10 @@ QString ModelToday::getTemperature(){
     return QString("%1°").arg(_currentWeather._main._temp, 0, 'f', 0, 0);
 }
 
+QString ModelToday::getDate(){
+    return _currentWeather._dt.toString("ddd MMMM yyyy");
+}
+
 void ModelToday::onWeatherChanged(const OpenWeatherMap::Replies::Data::CurrentWeather &currentWeather) {
     _currentWeather = currentWeather;
     emit weatherChanged();

@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QFuture>
 #include "weather_controller.h"
 #include "model_forecast.h"
 #include "model_today.h"
@@ -23,16 +24,21 @@ int Application::start(int argc, char *argv[]) {
     QCoreApplication::setApplicationName("QtQuick Application");
     QCoreApplication::setApplicationVersion(OPENWEATHERMAP_LIBRARY_VERSION);
 
-    BusinessLogic::WeatherController weather;
-    weather.setAppId(OPENWEATHERMAP_APPID);
-    weather.setLocation("Luzern");
-
     BusinessLogic::Settings settings;
     BusinessLogic::ModelToday modelToday;
     BusinessLogic::ModelForecast modelForecast;
+    BusinessLogic::WeatherController weather;
 
+    QObject::connect(&settings, &BusinessLogic::Settings::appIdChanged, [&](){
+        weather.setAppId(settings.getAppId());
+        weather.requestCurrentWeatherByCityName();
+    });
     QObject::connect(&settings, &BusinessLogic::Settings::locationChanged, [&](){
         weather.setLocation(settings.getLocation());
+        weather.requestCurrentWeatherByCityName();
+    });
+    QObject::connect(&settings, &BusinessLogic::Settings::languageChanged, [&](){
+        weather.setLanguage(settings.getLanguage());
         weather.requestCurrentWeatherByCityName();
     });
     QObject::connect(&weather, &BusinessLogic::WeatherController::weatherChanged, &modelToday, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
@@ -48,6 +54,8 @@ int Application::start(int argc, char *argv[]) {
     engine.load(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
 
     settings.loadSettings();
+    weather.setAppId(settings.getAppId());
+    weather.setLocation(settings.getLocation());
     weather.requestCurrentWeatherByCityName();
 
     int status = app.exec();

@@ -24,23 +24,23 @@ WidgetForecastItem::WidgetForecastItem(QWidget *parent)
     vlayout->setContentsMargins(0, 0, 0, 0);
     vlayout->setSpacing(10);
 
-    weatherIcon = new LabelAspectRatio(this);
-    weatherIcon->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    weatherIcon->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-    weatherIcon->setMinimumSize(QSize(40, 40));
-    weatherIcon->setScaledContents(true);
+    _weather_icon = new LabelAspectRatio(this);
+    _weather_icon->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    _weather_icon->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    _weather_icon->setMinimumSize(QSize(40, 40));
+    _weather_icon->setScaledContents(true);
 
-    dayLabel = new QLabel(this);
-    dayLabel->setObjectName("ForecastDayLabel");
-    dayLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    _day_label = new QLabel(this);
+    _day_label->setObjectName("ForecastDayLabel");
+    _day_label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
-    temperature = new QLabel(this);
-    temperature->setObjectName("ForecastTemperatureLabel");
-    temperature->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    _temperature = new QLabel(this);
+    _temperature->setObjectName("ForecastTemperatureLabel");
+    _temperature->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
-    vlayout->addWidget(dayLabel);
-    vlayout->addWidget(weatherIcon, 1);
-    vlayout->addWidget(temperature);
+    vlayout->addWidget(_day_label);
+    vlayout->addWidget(_weather_icon, 1);
+    vlayout->addWidget(_temperature);
 
     setLayout(vlayout);
 }
@@ -61,16 +61,16 @@ void WidgetForecastItem::updateFields()
     if (!index.isValid())
         return;
 
-    temperature->setText(_model->data(index, BusinessLogic::ModelForecast::Roles::TemperatureRange).value<QString>());
+    _temperature->setText(_model->data(index, BusinessLogic::ModelForecast::Roles::TemperatureRange).value<QString>());
 
     QSvgRenderer renderer(QString(":/weather/%1.svg").arg(_model->data(index, BusinessLogic::ModelForecast::Roles::Icon).value<QString>()));
     QPixmap pm(100, 100);
     pm.fill(Qt::transparent);
     QPainter painter(&pm);
     renderer.render(&painter, pm.rect());
-    weatherIcon->setPixmap(pm);
+    _weather_icon->setPixmap(pm);
 
-    dayLabel->setText(_model->data(index, BusinessLogic::ModelForecast::Roles::Day).value<QString>());
+    _day_label->setText(_model->data(index, BusinessLogic::ModelForecast::Roles::Day).value<QString>());
 }
 
 void WidgetForecastItem::paintEvent(QPaintEvent *)

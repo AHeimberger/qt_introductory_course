@@ -9,6 +9,18 @@ Settings::Settings() :
 {
 }
 
+void Settings::setAppId(const QString &appId) {
+    if (appId == _appId)
+        return;
+
+    _appId = appId;
+    emit appIdChanged();
+}
+
+QString Settings::getAppId() const {
+    return _appId;
+}
+
 void Settings::setLocationsAsList(const QStringList &locations) {
     if (locations == _locations)
         return;
@@ -68,6 +80,9 @@ QString Settings::getLanguage() const {
 void Settings::loadSettings() {
     QSettings settings(_settings_file, QSettings::NativeFormat);
 
+    _appId = settings.value("appid", OPENWEATHERMAP_APPID).toString();
+    emit appIdChanged();
+
     _locations = settings.value("locations", QStringList({"Zurich","New York","Sydney", "Tokyo", "Cape Town"})).toStringList();
     emit locationsChanged();
 
@@ -84,6 +99,7 @@ void Settings::loadSettings() {
 void Settings::storeSettings() {
     QSettings settings(_settings_file, QSettings::NativeFormat);
 
+    settings.setValue("appid", _appId);
     settings.setValue("locations", _locations);
     settings.setValue("location",  _location);
     settings.setValue("language", _language);

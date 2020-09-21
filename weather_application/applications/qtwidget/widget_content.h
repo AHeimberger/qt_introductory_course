@@ -49,9 +49,8 @@ private:
 
     QComboBox* _combobox_location = nullptr;
     WidgetToday* _today_widget = nullptr;
-    QDataWidgetMapper* dataMapper = nullptr;
     QPushButton* _button_settings = nullptr;
-    QListView *forecastView = nullptr;
+    QListView *_forecast_view = nullptr;
     WidgetForecastItem* _items_forecast[FORECAST_ITEM_COUNT];
 };
 

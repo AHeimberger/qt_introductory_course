@@ -39,7 +39,7 @@ bool StyleSheet::load(const QString &file_name)
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream stream(&file);
-        style_sheet = prepare(stream.readAll());
+        _style_sheet = prepare(stream.readAll());
         res = true;
     }
     else
@@ -52,7 +52,7 @@ bool StyleSheet::load(const QString &file_name)
 
 const QString &StyleSheet::getStyleSheet() const
 {
-    return style_sheet;
+    return _style_sheet;
 }
 
 

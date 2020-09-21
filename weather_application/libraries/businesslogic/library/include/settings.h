@@ -14,11 +14,15 @@ class Settings: public QObject
 public:
     Settings();
 
+    Q_PROPERTY (QString appId READ getAppId WRITE setAppId NOTIFY appIdChanged)
     Q_PROPERTY (QStringList locationsAsList READ getLocationsAsList WRITE setLocationsAsList NOTIFY locationsChanged)
     Q_PROPERTY (QString locations READ getLocations WRITE setLocations NOTIFY locationsChanged)
     Q_PROPERTY (QString location READ getLocation WRITE setLocation NOTIFY locationChanged)
     Q_PROPERTY (QStringList languagesAsList READ getLanguagesAsList CONSTANT)
     Q_PROPERTY (QString language READ getLanguage WRITE setLanguage NOTIFY languageChanged)
+
+    void setAppId(const QString &appId);
+    QString getAppId() const;
 
     void setLocationsAsList(const QStringList &locations);
     QStringList getLocationsAsList() const;
@@ -38,12 +42,14 @@ public:
     void storeSettings();
 
 signals:
+    void appIdChanged();
     void locationsChanged();
     void locationChanged();
     void languageChanged();
 
 private:
     QString _settings_file;
+    QString _appId;
     QStringList _locations;
     QString _location;
     QString _language;

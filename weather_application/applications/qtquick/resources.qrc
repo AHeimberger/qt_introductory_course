@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file alias="settings/menu.svg">qrc/menu.svg</file>
         <file alias="weather/unknown.svg">qrc/unknown.svg</file>
-
         <file alias="weather/few-clouds.svg">qrc/icons/weather-few-clouds.svg</file>
         <file alias="weather/fog.svg">qrc/icons/weather-fog.svg</file>
         <file alias="weather/haze.svg">qrc/icons/weather-haze.svg</file>
@@ -15,7 +14,6 @@
         <file alias="weather/sunny.svg">qrc/icons/weather-sunny.svg</file>
         <file alias="weather/sunny-very-few-clouds.svg">qrc/icons/weather-sunny-very-few-clouds.svg</file>
         <file alias="weather/thundershower.svg">qrc/icons/weather-thundershower.svg</file>
-
         <file alias="qml/Main.qml">qrc/qml/Main.qml</file>
         <file alias="qml/ForecastWeatherItem.qml">qrc/qml/ForecastWeatherItem.qml</file>
         <file alias="qml/SettingsMenu.qml">qrc/qml/SettingsMenu.qml</file>

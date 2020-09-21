@@ -17,7 +17,8 @@ public:
 
 private:
     QString prepare(const QString& style_sheet);
-    QString style_sheet;
+
+    QString _style_sheet;
 };
 
 #endif // STYLESHEET_H

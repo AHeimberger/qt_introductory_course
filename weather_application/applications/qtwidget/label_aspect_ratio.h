@@ -22,8 +22,8 @@ protected:
 private:
     void updateMargins();
 
-    int pixmap_width = 0;
-    int pixmap_height = 0;
+    int _pixmap_width = 0;
+    int _pixmap_height = 0;
 };
 
 #endif // LABELASPECTRATIO_H

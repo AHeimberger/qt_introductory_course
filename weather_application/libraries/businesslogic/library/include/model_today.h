@@ -14,6 +14,7 @@ class ModelToday : public QObject
     Q_PROPERTY(QString description READ getDescription NOTIFY weatherChanged)
     Q_PROPERTY(QString icon READ getIcon NOTIFY weatherChanged)
     Q_PROPERTY(QString temperature READ getTemperature NOTIFY weatherChanged)
+    Q_PROPERTY(QString date READ getDate NOTIFY weatherChanged)
 
 public:
     ModelToday();
@@ -23,6 +24,7 @@ public:
     QString getDescription();
     QString getIcon();
     QString getTemperature();
+    QString getDate();
 
 signals:
     void weatherChanged();
