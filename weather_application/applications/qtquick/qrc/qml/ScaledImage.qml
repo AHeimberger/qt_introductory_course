@@ -5,6 +5,9 @@ Item {
     property double scaling: 1.0
     property alias source: img.source
 
+    height: img.paintedHeight
+    width: img.paintedWidth
+
     Image {
         id: img
         anchors.centerIn: parent

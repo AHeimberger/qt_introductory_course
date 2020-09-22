@@ -1,11 +1,12 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.0
 import QtGraphicalEffects 1.0
 
 Rectangle {
     id: todayWeatherItem
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#FE8100" }
-        GradientStop { position: 1.0; color: "#FE9808" }
+        GradientStop { position: 1.0; color: "#ff0000" }
     }
 
     property alias city: city.text
@@ -14,64 +15,66 @@ Rectangle {
     property alias description: description.text
     property alias date: date.text
 
-    ScaledImage {
-        id: icon
-        anchors.fill: parent
-        scaling: 10
-        padding: 40
-    }
-    ColorOverlay{
-        anchors.fill: icon
-        antialiasing: true
-        source: icon
-        color: "white"
-    }
+    GridLayout {
+        id: weatherItem
+        anchors.centerIn: parent
+        columns: 2; columnSpacing: 0
+        rows: 2; rowSpacing: 0
 
-    Text {
-        id: description
-        font.pointSize: 50
-        wrapMode: Text.WordWrap
-        anchors {
-            top: parent.top
-            left: parent.left
-            topMargin: 5
-            leftMargin: 5
-        }
-        color: "white"
-    }
+        Column {
+            Text {
+                id: description
+                font.pointSize: 30
+                anchors.right: parent.right
+                horizontalAlignment: Text.AlignRight
+                color: "white"
+            }
 
-    Text {
-        id: temperature
-        font.pointSize: 28
-        anchors {
-            top: description.bottom
-            topMargin: 5
+            Text {
+                id: temperature
+                font.pointSize: 50
+                color: "white"
+                anchors.right: parent.right
+                horizontalAlignment: Text.AlignRight
+            }
         }
-        color: "white"
-    }
 
-    Text {
-        id: city
-        font.pointSize: 50
-        wrapMode: Text.WordWrap
-        width: parent.width
-        horizontalAlignment: Text.AlignHCenter
-        anchors {
-            bottom: parent.bottom
-            bottomMargin: 80
-        }
-        color: "white"
-    }
+        Item {
+            Layout.preferredWidth: 200
+            Layout.preferredHeight: 200
 
-    Text {
-        id: date
-        font.pointSize: 28
-        width: parent.width
-        horizontalAlignment: Text.AlignHCenter
-        anchors {
-            top: city.bottom
-            topMargin: 5
+            ScaledImage {
+                id: icon
+                anchors.centerIn: parent
+                scaling: 7
+                padding: 40
+            }
+
+            ColorOverlay{
+                source: icon
+                anchors.fill: icon
+                antialiasing: true
+                color: "white"
+            }
         }
-        color: "white"
+
+        Text {
+            id: date
+            font.pointSize: 20
+            color: "white"
+            Layout.columnSpan: 2
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Text {
+            id: city
+            font.pointSize: 40
+            wrapMode: Text.WordWrap
+            color: "white"
+            Layout.columnSpan: 2
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignHCenter
+        }
     }
 }
