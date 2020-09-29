@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(cpp_02_qt_core_properties LANGUAGES CXX)
+project(cpp_06_solution LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -13,9 +13,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5Core)
 
-add_executable(cpp_02_qt_core_properties
-    header.h
+add_executable(cpp_06_solution
     main.cpp
+    header.h
 )
 
-target_link_libraries(cpp_02_qt_core_properties Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(cpp_06_solution Qt${QT_VERSION_MAJOR}::Core)

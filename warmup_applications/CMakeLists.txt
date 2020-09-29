@@ -1,3 +1,3 @@
 add_subdirectory(01_cpp_fundamentals)
 add_subdirectory(02_qml_fundamentals)
-# add_subdirectory(03_combine_cpp_qml)
+add_subdirectory(03_combine_cpp_qml)

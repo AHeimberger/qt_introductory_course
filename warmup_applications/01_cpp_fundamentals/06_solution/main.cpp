@@ -1,15 +1,21 @@
 #include <QCoreApplication>
 #include <QDebug>
+#include <QTimer>
 #include "header.h"
+
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    // check the cmake output directory for a file
-    // called moc_header.cpp
+    QTimer timer;
+    timer.setInterval(500);
+
     Hans hans;
-    qDebug() << hans.objectName() << "\n";
+
+    QObject::connect(&timer, &QTimer::timeout, &hans, &Hans::onTimeout);
+
+    timer.start();
 
     return a.exec();
 }

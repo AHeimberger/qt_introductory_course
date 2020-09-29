@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(03_repeater LANGUAGES CXX)
+project(qml_03_repeater LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -13,10 +13,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
-add_executable(03_repeater
+add_executable(qml_03_repeater
     main.cpp
     qml.qrc
     )
 
-target_link_libraries(03_repeater
+target_link_libraries(qml_03_repeater
     PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)

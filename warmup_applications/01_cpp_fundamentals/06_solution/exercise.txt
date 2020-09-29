@@ -1,0 +1,3 @@
+- QTimer basierter Aufbau
+- Testing 
+- Set Property add number + 1

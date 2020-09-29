@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(01_hierarchy LANGUAGES CXX)
+project(qml_01_hierarchy LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -13,10 +13,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
-add_executable(01_hierarchy
+add_executable(qml_01_hierarchy
     main.cpp
     qml.qrc
     )
 
-target_link_libraries(01_hierarchy
+target_link_libraries(qml_01_hierarchy
     PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)

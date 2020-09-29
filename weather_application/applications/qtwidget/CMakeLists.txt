@@ -1,4 +1,4 @@
-project(qtwidget LANGUAGES CXX)
+project(final_qtwidget LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
@@ -6,7 +6,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 option(GRAPHICAL_DEBUG "Adds additional widget information for graphical debugging ON/OFF" OFF)
-
 if(GRAPHICAL_DEBUG)
     ADD_DEFINITIONS(-DGRAPHICAL_DEBUG)
 endif(GRAPHICAL_DEBUG)
@@ -15,7 +14,7 @@ unset(GRAPHICAL_DEBUG CACHE)
 find_package(Qt5
     COMPONENTS Widgets Core Network Svg)
 
-add_executable(qtwidget
+add_executable(final_qtwidget
     main.cpp
     main_window.h main_window.cpp
     label_aspect_ratio.h label_aspect_ratio.cpp
@@ -26,5 +25,5 @@ add_executable(qtwidget
     style_sheet.h style_sheet.cpp
     resources.qrc)
 
-target_link_libraries(qtwidget
+target_link_libraries(final_qtwidget
     PRIVATE Qt5::Widgets Qt5::Core Qt5::Network Qt5::Svg businesslogiclib openweathermaplib)
