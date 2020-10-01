@@ -5,12 +5,45 @@
 #include <QJsonArray>
 #include <QUrlQuery>
 #include <QDebug>
+#include <QMetaEnum>
 
 namespace OpenWeatherMap {
 
 const static QString BaseURI = "http://api.openweathermap.org";
 
 const static QString Forecast16Days = "16";
+
+QString Enums::getUnit(const Enums::Units &unit) {
+    switch(unit) {
+    case Units::fahrenheit: return "imperial";
+    case Units::celcius: return "metric";
+    case Units::kelvin: return "";
+    default: return "metric";
+    }
+}
+
+Enums::Languages Enums::getLanguageEnum(const QString &language) {
+    bool isOk = true;
+    QString languageCopy = language.toLower();
+    auto&& metaEnum = QMetaEnum::fromType<Languages>();
+    Languages languageEnum = static_cast<Languages>(metaEnum.keyToValue(languageCopy.toUtf8().data(), &isOk));
+
+    if (isOk) {
+        return languageEnum;
+    }
+
+    return Languages::english;
+}
+
+QString Enums::getLanguageCode(const Enums::Languages &language) {
+    switch(language) {
+    case Languages::albanian: return "al";
+    case Languages::german: return "de";
+    case Languages::english: return "en";
+    case Languages::french: return "fr";
+    default: return "en"; // use english as default
+    }
+}
 
 namespace Requests {
 
@@ -21,7 +54,7 @@ void addQueryItems(const DefaultQueryParams &params, QUrl &uri, QUrlQuery items)
     metaEnum = QMetaEnum::fromType<Enums::Formats>();
     items.addQueryItem("mode", metaEnum.valueToKey(params._format));
     items.addQueryItem("units", Enums::getUnit(params._units));
-    items.addQueryItem("lang", Enums::getLanguageCode(params._languages));
+    items.addQueryItem("lang", Enums::getLanguageCode(params._language));
     uri.setQuery(items);
 }
 
@@ -111,7 +144,6 @@ QNetworkRequest currentAndForecastWeatherData(const DefaultQueryParams &params,
     addQueryItems(params, uri, {{ "lat", lat }, {"lon", lon}, {"exclude", exclude}});
     return createNetworkRequest(uri);
 }
-
 
 } // namespace Requests
 

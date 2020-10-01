@@ -3,7 +3,7 @@
 #include <QCoreApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QFuture>
+#include <QTranslator>
 #include "weather_controller.h"
 #include "model_forecast.h"
 #include "model_today.h"
@@ -23,6 +23,12 @@ int Application::start(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
     QCoreApplication::setApplicationName("QtQuick Application");
     QCoreApplication::setApplicationVersion(OPENWEATHERMAP_LIBRARY_VERSION);
+
+    QTranslator translator;
+    if (translator.load("german_de.qm")) {
+        qDebug() << "Translation loaded";
+    }
+    qApp->installTranslator(&translator);
 
     BusinessLogic::Settings settings;
     BusinessLogic::ModelToday modelToday;

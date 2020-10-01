@@ -3,5 +3,6 @@ documentation
 deploy
 
 *.txt.user
+*.qm
 .vscode
 appid.md

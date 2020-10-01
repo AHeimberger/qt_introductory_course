@@ -23,14 +23,7 @@ public:
     };
     Q_ENUM(Units)
 
-    static QString getUnit(const Units &unit) {
-        switch(unit) {
-            case Units::fahrenheit: return "imperial";
-            case Units::celcius: return "metric";
-            case Units::kelvin: return "";
-            default: return "metric";
-        }
-    }
+    static QString getUnit(const Units &unit);
 
     enum Languages {
         afrikaans, albanian, arabic, azerbaijani, bulgarian, catalan, czech, danish, german,
@@ -42,17 +35,8 @@ public:
     };
     Q_ENUM(Languages)
 
-    static QString getLanguageCode(const Languages &language) {
-        // TODO (AHE): add other language codes
-
-        switch(language) {
-            case Languages::afrikaans: return "af";
-            case Languages::albanian: return "al";
-            case Languages::german: return "de";
-            case Languages::english: return "en";
-            default: return "";
-        }
-    }
+    static Enums::Languages getLanguageEnum(const QString &language);
+    static QString getLanguageCode(const Languages &language);
 };
 
 namespace Requests {
@@ -61,7 +45,7 @@ struct DefaultQueryParams {
     QString _app_id = "";
     Enums::Formats _format = OpenWeatherMap::Enums::Formats::json;
     Enums::Units _units = OpenWeatherMap::Enums::Units::celcius;
-    Enums::Languages _languages = OpenWeatherMap::Enums::Languages::english;
+    Enums::Languages _language = OpenWeatherMap::Enums::Languages::english;
 };
 
 // Current Weather Data :: https://openweathermap.org/current

@@ -21,7 +21,7 @@ void TestRequests::test_currentWeatherByCityName_expect_correct_url_with_filled_
     queryParams._app_id = "myappid";
     queryParams._format = OpenWeatherMap::Enums::Formats::html;
     queryParams._units = OpenWeatherMap::Enums::Units::fahrenheit;
-    queryParams._languages = OpenWeatherMap::Enums::Languages::albanian;
+    queryParams._language = OpenWeatherMap::Enums::Languages::albanian;
     QNetworkRequest request = currentWeatherByCityName(queryParams, "Tirana");
 
     QCOMPARE(request.url().toString(), "http://api.openweathermap.org/data/2.5/weather?q=Tirana&appid=myappid&mode=html&units=imperial&lang=al");

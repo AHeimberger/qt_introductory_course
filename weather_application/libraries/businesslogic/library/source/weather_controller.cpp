@@ -22,12 +22,6 @@ void WeatherController::setAppId(const QString &appid) {
         return;
 
     _defaultQueryParams._app_id = appid;
-    emit appidChanged();
-}
-
-QString WeatherController::getAppId() const
-{
-    return _defaultQueryParams._app_id;
 }
 
 void WeatherController::setLocation(const QString &location) {
@@ -35,17 +29,15 @@ void WeatherController::setLocation(const QString &location) {
         return;
 
     _location = location;
-    emit locationChanged();
-}
-
-QString WeatherController::getLocation() const
-{
-    return _location;
 }
 
 void WeatherController::setLanguage(const QString &language)
 {
-    // todo (ahe) :: set language
+    OpenWeatherMap::Enums::Languages languageEnum = OpenWeatherMap::Enums::getLanguageEnum(language);
+    if (languageEnum == _defaultQueryParams._language)
+        return;
+
+    _defaultQueryParams._language = OpenWeatherMap::Enums::getLanguageEnum(language);
 }
 
 void WeatherController::requestCurrentWeatherByCityName() {

@@ -13,7 +13,7 @@ Item {
 
         Text {
             Layout.fillWidth: true
-            text: "Application ID:"
+            text: qsTr("Application ID:")
         }
 
         TextArea {
@@ -25,7 +25,7 @@ Item {
 
         Text {
             Layout.fillWidth: true
-            text: "Locations:"
+            text: qsTr("Locations:")
         }
 
         TextArea {
@@ -38,7 +38,7 @@ Item {
 
         Text {
             Layout.fillWidth: true
-            text: "Language:"
+            text: qsTr("Language:")
         }
 
         ComboBox {
@@ -54,7 +54,7 @@ Item {
 
             Button {
                 id: okButton
-                text: "OK"
+                text: qsTr("OK")
                 background: SelectionBackground {}
                 onClicked: {
                     cppSettings.appId = appId.text
@@ -66,7 +66,7 @@ Item {
 
             Button {
                 id: cancelButton
-                text: "CANCEL"
+                text: qsTr("CANCEL")
                 background: SelectionBackground {}
                 onClicked: {
                     appId.text = cppSettings.appId

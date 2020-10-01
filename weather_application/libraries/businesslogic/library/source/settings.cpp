@@ -1,6 +1,7 @@
 #include "settings.h"
 #include <QCoreApplication>
 #include <QSettings>
+#include <QLocale>
 
 namespace BusinessLogic {
 
@@ -62,7 +63,11 @@ QString Settings::getLocation() const {
 }
 
 QStringList Settings::getLanguagesAsList() const {
-    return {"English", "German", "French"};
+    return {
+        QT_TRANSLATE_NOOP("Language", "English"),
+        QT_TRANSLATE_NOOP("Language", "German"),
+        QT_TRANSLATE_NOOP("Language", "French")
+    };
 }
 
 void Settings::setLanguage(const QString &language) {
@@ -70,6 +75,7 @@ void Settings::setLanguage(const QString &language) {
         return;
 
     _language = language;
+    QLocale::setDefault(QLocale::French);
     emit languageChanged();
 }
 
@@ -83,7 +89,11 @@ void Settings::loadSettings() {
     _appId = settings.value("appid", OPENWEATHERMAP_APPID).toString();
     emit appIdChanged();
 
-    _locations = settings.value("locations", QStringList({"Zurich","New York","Sydney", "Tokyo", "Cape Town"})).toStringList();
+    _locations = settings.value("locations", QStringList({"Zurich",
+                                                          "New York",
+                                                          "Sydney",
+                                                          "Tokyo",
+                                                          "Cape Town"})).toStringList();
     emit locationsChanged();
 
     _location = settings.value("location").toString();
