@@ -30,10 +30,9 @@ Install docker, enter the source directory and run following commands from a bas
 - add documentation to add OPENWEATHERMAP_APPID
 - not happy with qwidget application
 - internationalization not done yet
-- app_id textfield to update
 
 
 #### Thanks to
 
-- [Jürgen Messerer](https://github.com/messi1) for his open mind and help
+- [Jürgen Messerer](https://github.com/messi1) for his input, open mind and help
 - [Erik Flowers](https://github.com/erikflowers/weather-icons) for his nice set of icons
