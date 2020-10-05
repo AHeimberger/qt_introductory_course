@@ -82,6 +82,8 @@ void WeatherController::replyFinished(QNetworkReply *reply) {
         _weathers = OpenWeatherMap::Replies::currentAndForecast(byteArray);
         emit forecastChanged(_weathers);
     }
+
+    reply->deleteLater();
 }
 
 } // namespace BusinessLogic
