@@ -8,18 +8,19 @@ set(YOUR_OPENWEATHERMAP_APPID "YOUR_OPPENWEATHERMAP_APPID" CACHE STRING "Add you
 find_package(Qt5
     COMPONENTS Core Network REQUIRED)
 
-add_library(businesslogiclib SHARED
-    include/settings.h source/settings.cpp
-    include/model_today.h source/model_today.cpp
-    include/model_forecast.h source/model_forecast.cpp
-    include/weather_controller.h source/weather_controller.cpp)
+add_library(businesslogiclib SHARED)
 
 target_sources(businesslogiclib
     PUBLIC
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/settings.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/model_today.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/model_forecast.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/weather_controller.h")
+        "include/settings.h"
+        "include/model_today.h"
+        "include/model_forecast.h"
+        "include/weather_controller.h"
+    PRIVATE
+        "source/settings.cpp"
+        "source/model_today.cpp"
+        "source/model_forecast.cpp"
+        "source/weather_controller.cpp")
 
 target_include_directories(businesslogiclib
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
