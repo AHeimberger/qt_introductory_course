@@ -1,6 +1,7 @@
 preparation
 documentation
 deploy
+material
 
 *.txt.user
 *.qm
