@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-namespace BusinessLogic {
+namespace OpenWeatherMap {
 
 WeatherController::WeatherController() :
     _location(),
@@ -33,20 +33,20 @@ void WeatherController::setLocation(const QString &location) {
 
 void WeatherController::setLanguage(const QString &language)
 {
-    OpenWeatherMap::Enums::Languages languageEnum = OpenWeatherMap::Enums::getLanguageEnum(language);
+    Enums::Languages languageEnum = Enums::getLanguageEnum(language);
     if (languageEnum == _defaultQueryParams._language)
         return;
 
-    _defaultQueryParams._language = OpenWeatherMap::Enums::getLanguageEnum(language);
+    _defaultQueryParams._language = Enums::getLanguageEnum(language);
 }
 
 void WeatherController::requestCurrentWeatherByCityName() {
-    _reply_current_weather = _manager->get(OpenWeatherMap::Requests::currentWeatherByCityName(_defaultQueryParams, _location));
+    _reply_current_weather = _manager->get(Requests::currentWeatherByCityName(_defaultQueryParams, _location));
 }
 
 void WeatherController::requestCurrentAndForecastWeatherData() {
     _reply_current_and_forecast_weathers = _manager->get(
-        OpenWeatherMap::Requests::currentAndForecastWeatherData(_defaultQueryParams,
+        Requests::currentAndForecastWeatherData(_defaultQueryParams,
                                                 QString::number(_weather._coord._lat),
                                                 QString::number(_weather._coord._lon))
         );
@@ -73,17 +73,17 @@ void WeatherController::replyFinished(QNetworkReply *reply) {
 
     if (reply == _reply_current_weather)
     {
-        _weather = OpenWeatherMap::Replies::currentWeather(byteArray);
+        _weather = Replies::currentWeather(byteArray);
         emit weatherChanged(_weather);
     }
 
     if (reply == _reply_current_and_forecast_weathers)
     {
-        _weathers = OpenWeatherMap::Replies::currentAndForecast(byteArray);
+        _weathers = Replies::currentAndForecast(byteArray);
         emit forecastChanged(_weathers);
     }
 
     reply->deleteLater();
 }
 
-} // namespace BusinessLogic
+} // namespace OpenWeatherMap

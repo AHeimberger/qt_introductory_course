@@ -1,5 +1,5 @@
-#ifndef WEATHER_H
-#define WEATHER_H
+#ifndef WEATHER_CONTROLLER_H
+#define WEATHER_CONTROLLER_H
 
 #include "requests.h"
 #include "replies.h"
@@ -8,7 +8,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
-namespace BusinessLogic {
+namespace OpenWeatherMap {
 
 class WeatherController : public QObject {
     Q_OBJECT
@@ -44,6 +44,6 @@ private:
     OpenWeatherMap::Replies::Data::CurrentAndForecast _weathers;
 };
 
-} // namespace BusinessLogic
+} // namespace OpenWeatherMap
 
-#endif // WEATHER_H
+#endif // WEATHER_CONTROLLER_H

@@ -9,9 +9,11 @@ class QTranslator;
 class QStringListModel;
 namespace BusinessLogic {
     class Settings;
-    class WeatherController;
     class ModelToday;
     class ModelForecast;
+}
+namespace OpenWeatherMap {
+class WeatherController;
 }
 
 class MainWindow : public QMainWindow
@@ -39,7 +41,7 @@ private:
     QString _settings_file;
     QString _language;
     BusinessLogic::Settings *_settings = nullptr;
-    BusinessLogic::WeatherController *_weather_controller = nullptr;
+    OpenWeatherMap::WeatherController *_weather_controller = nullptr;
     BusinessLogic::ModelToday *_model_today = nullptr;
     BusinessLogic::ModelForecast *_model_forecast = nullptr;
 };

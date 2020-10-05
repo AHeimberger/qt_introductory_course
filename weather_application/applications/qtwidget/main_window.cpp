@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     _settings_file(QApplication::applicationDirPath() + "/settings.ini")
 {
     _settings = new BusinessLogic::Settings();
-    _weather_controller = new BusinessLogic::WeatherController();
+    _weather_controller = new OpenWeatherMap::WeatherController();
     _model_today = new BusinessLogic::ModelToday();
     _model_forecast = new BusinessLogic::ModelForecast();
     _location_list_model = new QStringListModel();
@@ -45,9 +45,9 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     // controller
-    QObject::connect(_weather_controller, &BusinessLogic::WeatherController::weatherChanged, _model_today, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
-    QObject::connect(_weather_controller, &BusinessLogic::WeatherController::forecastChanged, _model_forecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
-    QObject::connect(_weather_controller, &BusinessLogic::WeatherController::weatherChanged, [&](){
+    QObject::connect(_weather_controller, &OpenWeatherMap::WeatherController::weatherChanged, _model_today, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
+    QObject::connect(_weather_controller, &OpenWeatherMap::WeatherController::forecastChanged, _model_forecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
+    QObject::connect(_weather_controller, &OpenWeatherMap::WeatherController::weatherChanged, [&](){
         _weather_controller->requestCurrentAndForecastWeatherData();
     });
 

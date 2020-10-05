@@ -15,12 +15,10 @@ target_sources(businesslogiclib
         "include/settings.h"
         "include/model_today.h"
         "include/model_forecast.h"
-        "include/weather_controller.h"
     PRIVATE
         "source/settings.cpp"
         "source/model_today.cpp"
-        "source/model_forecast.cpp"
-        "source/weather_controller.cpp")
+        "source/model_forecast.cpp")
 
 target_include_directories(businesslogiclib
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")

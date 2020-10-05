@@ -14,10 +14,12 @@ target_sources(openweathermaplib
         "include/icon_mappings.h"
         "include/requests.h"
         "include/replies.h"
+        "include/weather_controller.h"
     PRIVATE
         "source/icon_mappings.cpp"
         "source/requests.cpp"
-        "source/replies.cpp")
+        "source/replies.cpp"
+        "source/weather_controller.cpp")
 
 target_include_directories(openweathermaplib
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")

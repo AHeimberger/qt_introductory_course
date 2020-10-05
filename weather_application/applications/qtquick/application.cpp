@@ -33,7 +33,7 @@ int Application::start(int argc, char *argv[]) {
     BusinessLogic::Settings settings;
     BusinessLogic::ModelToday modelToday;
     BusinessLogic::ModelForecast modelForecast;
-    BusinessLogic::WeatherController weather;
+    OpenWeatherMap::WeatherController weather;
 
     QObject::connect(&settings, &BusinessLogic::Settings::appIdChanged, [&](){
         weather.setAppId(settings.getAppId());
@@ -47,9 +47,9 @@ int Application::start(int argc, char *argv[]) {
         weather.setLanguage(settings.getLanguage());
         weather.requestCurrentWeatherByCityName();
     });
-    QObject::connect(&weather, &BusinessLogic::WeatherController::weatherChanged, &modelToday, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
-    QObject::connect(&weather, &BusinessLogic::WeatherController::forecastChanged, &modelForecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
-    QObject::connect(&weather, &BusinessLogic::WeatherController::weatherChanged, [&](){
+    QObject::connect(&weather, &OpenWeatherMap::WeatherController::weatherChanged, &modelToday, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
+    QObject::connect(&weather, &OpenWeatherMap::WeatherController::forecastChanged, &modelForecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
+    QObject::connect(&weather, &OpenWeatherMap::WeatherController::weatherChanged, [&](){
         weather.requestCurrentAndForecastWeatherData();
     });
 

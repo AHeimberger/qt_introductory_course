@@ -1,6 +1,8 @@
 #include "icon_mappings.h"
 #include <QMap>
 
+namespace OpenWeatherMap {
+
 QMap<QString, QString> iconTokensToIconName {
     {"unknown", "unknown"},
     {"01d", "sunny"},
@@ -27,3 +29,5 @@ QString getNameFromIconToken(const QString &iconToken) {
 
     return iconTokensToIconName["unknown"];
 }
+
+} // namespace OpenWeatherMap
