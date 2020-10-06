@@ -1,4 +1,4 @@
-#include "weather_controller.h"
+#include "weather_service.h"
 #include <QMetaEnum>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -6,32 +6,32 @@
 
 namespace OpenWeatherMap {
 
-WeatherController::WeatherController() :
+WeatherService::WeatherService() :
     _location(),
     _manager(new QNetworkAccessManager()) {
-    QObject::connect(_manager, &QNetworkAccessManager::finished, this, &WeatherController::replyFinished);
+    QObject::connect(_manager, &QNetworkAccessManager::finished, this, &WeatherService::replyFinished);
 }
 
-WeatherController::~WeatherController() {
+WeatherService::~WeatherService() {
     delete _manager;
     _manager = nullptr;
 }
 
-void WeatherController::setAppId(const QString &appid) {
+void WeatherService::setAppId(const QString &appid) {
     if (_defaultQueryParams._app_id == appid)
         return;
 
     _defaultQueryParams._app_id = appid;
 }
 
-void WeatherController::setLocation(const QString &location) {
+void WeatherService::setLocation(const QString &location) {
     if (_location == location)
         return;
 
     _location = location;
 }
 
-void WeatherController::setLanguage(const QString &language)
+void WeatherService::setLanguage(const QString &language)
 {
     Enums::Languages languageEnum = Enums::getLanguageEnum(language);
     if (languageEnum == _defaultQueryParams._language)
@@ -40,11 +40,11 @@ void WeatherController::setLanguage(const QString &language)
     _defaultQueryParams._language = Enums::getLanguageEnum(language);
 }
 
-void WeatherController::requestCurrentWeatherByCityName() {
+void WeatherService::requestCurrentWeatherByCityName() {
     _reply_current_weather = _manager->get(Requests::currentWeatherByCityName(_defaultQueryParams, _location));
 }
 
-void WeatherController::requestCurrentAndForecastWeatherData() {
+void WeatherService::requestCurrentAndForecastWeatherData() {
     _reply_current_and_forecast_weathers = _manager->get(
         Requests::currentAndForecastWeatherData(_defaultQueryParams,
                                                 QString::number(_weather._coord._lat),
@@ -52,7 +52,7 @@ void WeatherController::requestCurrentAndForecastWeatherData() {
         );
 }
 
-void WeatherController::replyFinished(QNetworkReply *reply) {
+void WeatherService::replyFinished(QNetworkReply *reply) {
     if (!reply) {
         qDebug() << "Empty reply";
         return;

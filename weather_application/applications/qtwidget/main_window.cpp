@@ -7,7 +7,7 @@
 #include <QStringListModel>
 #include <QTranslator>
 #include "settings.h"
-#include "weather_controller.h"
+#include "weather_service.h"
 #include "model_today.h"
 #include "model_forecast.h"
 #include "widget_content.h"
@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     _settings_file(QApplication::applicationDirPath() + "/settings.ini")
 {
     _settings = new BusinessLogic::Settings();
-    _weather_controller = new OpenWeatherMap::WeatherController();
+    _weather_service = new OpenWeatherMap::WeatherService();
     _model_today = new BusinessLogic::ModelToday();
     _model_forecast = new BusinessLogic::ModelForecast();
     _location_list_model = new QStringListModel();
@@ -33,26 +33,26 @@ MainWindow::MainWindow(QWidget *parent)
     _content_widget->setModel(_model_today);
     _content_widget->setModel(_model_forecast);
 
-    _weather_controller->setAppId(OPENWEATHERMAP_APPID);
-    _weather_controller->setLocation("Luzern");
+    _weather_service->setAppId(OPENWEATHERMAP_APPID);
+    _weather_service->setLocation("Luzern");
 
     // widget
     QObject::connect(_content_widget, &WidgetContent::locationChanged, _settings, &BusinessLogic::Settings::setLocation, Qt::UniqueConnection);
     QObject::connect(_content_widget, &WidgetContent::showSettingsDialog, this, &MainWindow::showSettingsDialog, Qt::UniqueConnection);
     QObject::connect(_settings, &BusinessLogic::Settings::locationChanged, [&](){
-        _weather_controller->setLocation(_settings->getLocation());
-        _weather_controller->requestCurrentWeatherByCityName();
+        _weather_service->setLocation(_settings->getLocation());
+        _weather_service->requestCurrentWeatherByCityName();
     });
 
     // controller
-    QObject::connect(_weather_controller, &OpenWeatherMap::WeatherController::weatherChanged, _model_today, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
-    QObject::connect(_weather_controller, &OpenWeatherMap::WeatherController::forecastChanged, _model_forecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
-    QObject::connect(_weather_controller, &OpenWeatherMap::WeatherController::weatherChanged, [&](){
-        _weather_controller->requestCurrentAndForecastWeatherData();
+    QObject::connect(_weather_service, &OpenWeatherMap::WeatherService::weatherChanged, _model_today, &BusinessLogic::ModelToday::onWeatherChanged, Qt::UniqueConnection);
+    QObject::connect(_weather_service, &OpenWeatherMap::WeatherService::forecastChanged, _model_forecast, &BusinessLogic::ModelForecast::onForecastChanged, Qt::UniqueConnection);
+    QObject::connect(_weather_service, &OpenWeatherMap::WeatherService::weatherChanged, [&](){
+        _weather_service->requestCurrentAndForecastWeatherData();
     });
 
     _settings->loadSettings();
-    _weather_controller->requestCurrentWeatherByCityName();
+    _weather_service->requestCurrentWeatherByCityName();
     _location_list_model->setStringList(_settings->getLocationsAsList());
 }
 
@@ -88,8 +88,8 @@ void MainWindow::setLocationStringModel(const QStringList &locationList)
     if(locationList.size() > 0)
     {
         _location_list_model->setStringList(locationList);
-        _weather_controller->setLocation(_settings->getLocation());
-        _weather_controller->requestCurrentWeatherByCityName();
+        _weather_service->setLocation(_settings->getLocation());
+        _weather_service->requestCurrentWeatherByCityName();
     }
 }
 

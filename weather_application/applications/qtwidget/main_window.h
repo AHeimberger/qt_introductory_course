@@ -13,7 +13,7 @@ namespace BusinessLogic {
     class ModelForecast;
 }
 namespace OpenWeatherMap {
-class WeatherController;
+class WeatherService;
 }
 
 class MainWindow : public QMainWindow
@@ -41,7 +41,7 @@ private:
     QString _settings_file;
     QString _language;
     BusinessLogic::Settings *_settings = nullptr;
-    OpenWeatherMap::WeatherController *_weather_controller = nullptr;
+    OpenWeatherMap::WeatherService *_weather_service = nullptr;
     BusinessLogic::ModelToday *_model_today = nullptr;
     BusinessLogic::ModelForecast *_model_forecast = nullptr;
 };

@@ -4,7 +4,7 @@
 #include <QDebug>
 #include "requests.h"
 #include "replies.h"
-#include "weather_controller.h"
+#include "weather_service.h"
 
 
 int main(int argc, char *argv[])
@@ -32,16 +32,16 @@ int main(int argc, char *argv[])
     QString cityName = positionalArguments.first();
     bool isForecast = parser.isSet("forecast");
 
-    OpenWeatherMap::WeatherController weather;
+    OpenWeatherMap::WeatherService weather;
     weather.setAppId(OPENWEATHERMAP_APPID);
     weather.setLocation(cityName);
 
-    QObject::connect(&weather, &OpenWeatherMap::WeatherController::weatherChanged, [&](const OpenWeatherMap::Replies::Data::CurrentWeather &weather){
+    QObject::connect(&weather, &OpenWeatherMap::WeatherService::weatherChanged, [&](const OpenWeatherMap::Replies::Data::CurrentWeather &weather){
         qDebug().noquote() << "Showing weather for:" << cityName;
         qDebug().noquote() << weather._time_zone;
     });
 
-    QObject::connect(&weather, &OpenWeatherMap::WeatherController::forecastChanged, [&](const OpenWeatherMap::Replies::Data::CurrentAndForecast &currentAndForecast){
+    QObject::connect(&weather, &OpenWeatherMap::WeatherService::forecastChanged, [&](const OpenWeatherMap::Replies::Data::CurrentAndForecast &currentAndForecast){
         qDebug().noquote() << "Showing forecast for:" << cityName;
          qDebug().noquote() << currentAndForecast._daily.size();
     });

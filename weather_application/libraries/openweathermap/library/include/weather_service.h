@@ -10,7 +10,7 @@
 
 namespace OpenWeatherMap {
 
-class WeatherController : public QObject {
+class WeatherService : public QObject {
     Q_OBJECT
 
 signals:
@@ -18,8 +18,8 @@ signals:
     void forecastChanged( const OpenWeatherMap::Replies::Data::CurrentAndForecast &weathers);
 
 public:
-    WeatherController();
-    ~WeatherController();
+    WeatherService();
+    ~WeatherService();
 
     void setAppId(const QString &appid);
     void setLocation(const QString &location);
