@@ -1,21 +1,18 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(cpp_01_qt_core_signal_slots LANGUAGES CXX)
+project(01_cpp_01_qt_core_signal_slots LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 14)  # required to use qOverload
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5Core)
 
-add_executable(cpp_01_qt_core_signal_slots
+add_executable(01_cpp_01_qt_core_signal_slots
     header.h
     main.cpp
 )
 
-target_link_libraries(cpp_01_qt_core_signal_slots Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(01_cpp_01_qt_core_signal_slots Qt${QT_VERSION_MAJOR}::Core)

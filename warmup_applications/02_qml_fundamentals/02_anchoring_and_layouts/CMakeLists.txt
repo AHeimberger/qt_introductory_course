@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(qml_02_anchoring_and_layouts LANGUAGES CXX)
+project(02_qml_02_anchoring_and_layouts LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -13,10 +11,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
-add_executable(qml_02_anchoring_and_layouts
+add_executable(02_qml_02_anchoring_and_layouts
     main.cpp
     qml.qrc
     )
 
-target_link_libraries(qml_02_anchoring_and_layouts
+target_link_libraries(02_qml_02_anchoring_and_layouts
     PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)

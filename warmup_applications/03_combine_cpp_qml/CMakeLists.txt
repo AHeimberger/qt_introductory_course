@@ -1,5 +1,2 @@
-cmake_minimum_required(VERSION 3.14)
-project(03_combine_cpp_qml)
-
 add_subdirectory(01_register_context_property)
 add_subdirectory(02_register_qml_type)
