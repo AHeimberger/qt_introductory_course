@@ -10,6 +10,7 @@
 namespace OpenWeatherMap {
 
 const static QString BaseURI = "http://api.openweathermap.org";
+// const static QString BaseURI = "http://localhost:8000";
 
 const static QString Forecast16Days = "16";
 

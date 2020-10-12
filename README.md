@@ -1,9 +1,11 @@
 # Qt Introductory Course
 
-#### Whats Inside
+
+#### What is Inside
 
 - Different types of qt applications plus libraries
 - Icons: https://github.com/erikflowers/weather-icons licensed under SIL OFL 1.1
+- Simple reverse proxy to access OpenWeatherMap
 
 
 #### Simple Build Instruction
@@ -14,13 +16,27 @@ Install docker, enter the source directory and run following commands from a bas
     rm -rf ${DIR_DEPLOY}
     mkdir -p ${DIR_DEPLOY}
 
-    docker build --build-arg GROUP_ID=$(id -g ${USER}) --build-arg USER_ID=$(id -u ${USER}) --build-arg USER_NAME=${USER} -t qt_introductory_course .
-    docker run -u ${USER} --rm=true -v ${DIR_DEPLOY}:/deploy/ qt_introductory_course cmake
+    docker build \
+        --build-arg GROUP_ID=$(id -g ${USER}) \
+        --build-arg USER_ID=$(id -u ${USER}) \
+        --build-arg USER_NAME=${USER} \
+        -t qt_introductory_course \
+        .
+
+    docker run \
+        -u ${USER} \
+        --rm=true \
+        -v ${DIR_DEPLOY}:/deploy/ \
+        qt_introductory_course \
+        cmake
 
 
-#### Requirements
+#### Less Simple Instructions
+
+In case you do not use docker to build this project you have to install
 
 - Qt 5.15
+- Python3
 
 
 #### Needs Updates
@@ -29,7 +45,6 @@ Install docker, enter the source directory and run following commands from a bas
 - entrypoint.sh: make tests should execute tests
 - add documentation to add OPENWEATHERMAP_APPID
 - not happy with qwidget application
-- internationalization not done yet
 
 
 #### Thanks to
