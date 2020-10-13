@@ -2,11 +2,13 @@
 #include <QCoreApplication>
 
 #include "test_model_today.h"
+#include "test_model_forecast.h"
 
 int main(int argc, char* argv[]) {
     QCoreApplication app(argc, argv);
 
     TestModelToday testModelToday;
+    TestModelForecast testModelForecast;
 
     int status = 0;
     auto runTest = [&status, argc, argv](QObject* obj) {
@@ -27,6 +29,7 @@ int main(int argc, char* argv[]) {
     };
 
     runTest(&testModelToday);
+    runTest(&testModelForecast);
 
     return 0;
 }
