@@ -19,9 +19,11 @@
         <file alias="qml/SettingsMenu.qml">qrc/qml/SettingsMenu.qml</file>
         <file alias="qml/Line.qml">qrc/qml/Line.qml</file>
         <file alias="qml/SelectionBackground.qml">qrc/qml/SelectionBackground.qml</file>
+        <file alias="qml/Style.qml">qrc/qml/Style.qml</file>
         <file alias="qml/TodayWeatherItem.qml">qrc/qml/TodayWeatherItem.qml</file>
         <file alias="qml/ScaledImage.qml">qrc/qml/ScaledImage.qml</file>
         <file alias="qml/ViewWeather.qml">qrc/qml/ViewWeather.qml</file>
         <file alias="qml/ViewSettings.qml">qrc/qml/ViewSettings.qml</file>
+        <file alias="qml/qmldir">qrc/qml/qmldir</file>
     </qresource>
 </RCC>

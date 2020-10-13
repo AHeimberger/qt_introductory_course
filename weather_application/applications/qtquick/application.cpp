@@ -18,8 +18,6 @@ Application::~Application() {
 }
 
 int Application::start(int argc, char *argv[]) {
-    qDebug() << "OpenWeatherMapp AppID:" << OPENWEATHERMAP_APPID;
-
     QGuiApplication app(argc, argv);
     QCoreApplication::setApplicationName("QtQuick Application");
     QCoreApplication::setApplicationVersion(OPENWEATHERMAP_LIBRARY_VERSION);

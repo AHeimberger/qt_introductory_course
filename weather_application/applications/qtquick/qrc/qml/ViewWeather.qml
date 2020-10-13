@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
+import "."
 
 ColumnLayout {
     id: viewWeather
@@ -35,6 +36,7 @@ ColumnLayout {
     Line {
         Layout.fillWidth: true
         Layout.preferredHeight: 1
+        color: Style.forecast_item.line_color
     }
 
     ListView {
@@ -44,15 +46,17 @@ ColumnLayout {
         orientation: ListView.LeftToRight
         model: cppModelForecast
 
-        delegate: Item {
+        delegate: Rectangle {
             width: (repeaterItem.width / max_visible_entries)
             height: repeaterItem.height
+            color: Style.forecast_item.background_color
 
             Line {
                 visible: (index !== 0)
                 anchors.left: parent.left
                 height: parent.height
                 width: 1
+                color: Style.forecast_item.line_color
             }
 
             ForecastWeatherItem {
