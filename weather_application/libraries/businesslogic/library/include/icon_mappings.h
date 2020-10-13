@@ -3,10 +3,10 @@
 
 #include <QString>
 
-namespace OpenWeatherMap {
+namespace BusinessLogic {
 
 QString getNameFromIconToken(const QString &iconToken);
 
-} // namespace OpenWeatherMap
+} // namespace BusinessLogic
 
 #endif // ICON_MAPPINGS_H

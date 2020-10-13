@@ -34,7 +34,7 @@ QVariant ModelForecast::data(const QModelIndex &index, int role) const {
         }
 
         case Icon:
-            return OpenWeatherMap::getNameFromIconToken(day._weather.at(0)._icon);
+            return getNameFromIconToken(day._weather.at(0)._icon);
 
         case TemperatureRange:
             return QString("%1° / %2°").arg(day._temp._min, 0, 'f', 0, 0).arg(day._temp._max, 0, 'f', 0, 0);

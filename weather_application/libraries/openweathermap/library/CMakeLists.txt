@@ -13,10 +13,8 @@ target_sources(openweathermaplib
     PUBLIC
         "include/requests.h"
         "include/replies.h"
-        "include/icon_mappings.h"
         "include/weather_service.h"
     PRIVATE
-        "source/icon_mappings.cpp"
         "source/requests.cpp"
         "source/replies.cpp"
         "source/weather_service.cpp")

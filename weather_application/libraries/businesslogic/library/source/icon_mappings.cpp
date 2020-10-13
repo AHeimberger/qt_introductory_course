@@ -1,7 +1,7 @@
 #include "icon_mappings.h"
 #include <QMap>
 
-namespace OpenWeatherMap {
+namespace BusinessLogic {
 
 QMap<QString, QString> iconTokensToIconName {
     {"unknown", "unknown"},

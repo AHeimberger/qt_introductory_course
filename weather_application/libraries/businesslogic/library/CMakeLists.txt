@@ -12,10 +12,12 @@ add_library(businesslogiclib SHARED)
 
 target_sources(businesslogiclib
     PUBLIC
+        "include/icon_mappings.h"
         "include/settings.h"
         "include/model_today.h"
         "include/model_forecast.h"
     PRIVATE
+        "source/icon_mappings.cpp"
         "source/settings.cpp"
         "source/model_today.cpp"
         "source/model_forecast.cpp")

@@ -16,7 +16,7 @@ QString ModelToday::getDescription(){
 }
 
 QString ModelToday::getIcon(){
-    return OpenWeatherMap::getNameFromIconToken(_currentWeather._weather._icon);
+    return getNameFromIconToken(_currentWeather._weather._icon);
 }
 
 QString ModelToday::getTemperature(){
