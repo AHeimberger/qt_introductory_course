@@ -19,7 +19,7 @@ Application::~Application() {
 
 int Application::start(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
-    QCoreApplication::setApplicationName("QtQuick Application");
+    QCoreApplication::setApplicationName("QtQuick Weather Application");
     QCoreApplication::setApplicationVersion(OPENWEATHERMAP_LIBRARY_VERSION);
 
     QTranslator translator;
@@ -33,15 +33,15 @@ int Application::start(int argc, char *argv[]) {
     BusinessLogic::ModelForecast modelForecast;
     OpenWeatherMap::WeatherService weather;
 
-    QObject::connect(&settings, &BusinessLogic::Settings::appIdChanged, [&](){
+    QObject::connect(&settings, &BusinessLogic::Settings::appIdChanged, &weather, [&](){
         weather.setAppId(settings.getAppId());
         weather.requestCurrentWeatherByCityName();
     });
-    QObject::connect(&settings, &BusinessLogic::Settings::locationChanged, [&](){
+    QObject::connect(&settings, &BusinessLogic::Settings::locationChanged, &weather, [&](){
         weather.setLocation(settings.getLocation());
         weather.requestCurrentWeatherByCityName();
     });
-    QObject::connect(&settings, &BusinessLogic::Settings::languageChanged, [&](){
+    QObject::connect(&settings, &BusinessLogic::Settings::languageChanged, &weather, [&](){
         weather.setLanguage(settings.getLanguage());
         weather.requestCurrentWeatherByCityName();
     });

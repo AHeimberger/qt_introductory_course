@@ -9,10 +9,8 @@
 
 namespace OpenWeatherMap {
 
-const static QString BaseURI = "http://api.openweathermap.org";
-// const static QString BaseURI = "http://localhost:8000";
-
-const static QString Forecast16Days = "16";
+const static char* BaseURI = "http://api.openweathermap.org";
+// const static char* BaseURI = "http://localhost:8000";
 
 QString Enums::getUnit(const Enums::Units &unit) {
     switch(unit) {

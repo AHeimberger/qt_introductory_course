@@ -13,14 +13,19 @@ Window {
         id: swipeView
         anchors.fill: parent
         interactive: false
+        currentIndex: (cppSettings.appId === "" || cppSettings.appId === "YOUR_OPPENWEATHERMAP_APPID") ? 0 : 1
+
+        ViewInit {
+            onOkClicked: swipeView.currentIndex = 1
+        }
 
         ViewWeather {
-            onSettingsClicked: swipeView.currentIndex = 1
+            onSettingsClicked: swipeView.currentIndex = 2
         }
 
         ViewSettings {
-            onOkClicked: swipeView.currentIndex = 0
-            onCancelClicked: swipeView.currentIndex = 0
+            onOkClicked: swipeView.currentIndex = 1
+            onCancelClicked: swipeView.currentIndex = 1
         }
     }
 }

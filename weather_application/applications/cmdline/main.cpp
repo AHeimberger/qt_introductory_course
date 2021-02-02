@@ -15,13 +15,12 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("CommandLine Application");
     QCoreApplication::setApplicationVersion(OPENWEATHERMAP_LIBRARY_VERSION);
 
-    QString description;
     QCommandLineParser parser;
     parser.setApplicationDescription("This is a command line application for the openweathermap library.");
     parser.addHelpOption();
     parser.addVersionOption();
-    parser.addPositionalArgument("city", "Requries the name of a city.");
-    parser.addOption({ { "f", "forecast" }, "Add option if you want to sho forecast." });
+    parser.addPositionalArgument("city", "Requires the name of a city.");
+    parser.addOption({ { "f", "forecast" }, "Add option if you want to show forecast." });
     parser.process(app);
 
     QStringList positionalArguments = parser.positionalArguments();

@@ -17,6 +17,17 @@
     </message>
 </context>
 <context>
+    <name>ViewInit</name>
+    <message>
+        <source>Application ID:</source>
+        <translation type="unfinished">Applikations ID:</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
+    </message>
+</context>
+<context>
     <name>ViewSettings</name>
     <message>
         <source>Application ID:</source>
