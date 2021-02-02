@@ -41,7 +41,6 @@ In case you do not use docker to build this project you have to install
 
 #### Needs Updates
 
-- add presentation still in work
 - entrypoint.sh: make tests should execute tests
 - add documentation to add OPENWEATHERMAP_APPID
 - not happy with qwidget application
