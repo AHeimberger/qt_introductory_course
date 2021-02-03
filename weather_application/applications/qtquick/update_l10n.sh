@@ -19,7 +19,7 @@ echo "DIR_INSPECT                 ${INSPECT_DIR}"
 echo "FILES                       ${INSPECT_FILES}"
 
 
-/opt/Qt/5.15.0/gcc_64/bin/lupdate \
+/opt/Qt/5.15.1/gcc_64/bin/lupdate \
     ${INSPECT_FILES} \
     -recursive \
     -no-obsolete \
@@ -27,7 +27,7 @@ echo "FILES                       ${INSPECT_FILES}"
     -ts "${DIR_L10N}/german_de.ts"
 
 
-/opt/Qt/5.15.0/gcc_64/bin/lrelease \
+/opt/Qt/5.15.1/gcc_64/bin/lrelease \
     "${DIR_L10N}/german_de.ts" \
     -compress
 
