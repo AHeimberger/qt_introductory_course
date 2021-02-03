@@ -12,23 +12,25 @@
 
 Install docker, enter the source directory and run following commands from a bash:
 
-    DIR_DEPLOY="$(pwd)/deploy/"
-    rm -rf ${DIR_DEPLOY}
-    mkdir -p ${DIR_DEPLOY}
+```text
+DIR_DEPLOY="$(pwd)/deploy/"
+rm -rf ${DIR_DEPLOY}
+mkdir -p ${DIR_DEPLOY}
 
-    docker build \
-        --build-arg GROUP_ID=$(id -g ${USER}) \
-        --build-arg USER_ID=$(id -u ${USER}) \
-        --build-arg USER_NAME=${USER} \
-        -t qt_introductory_course \
-        .
+docker build \
+    --build-arg GROUP_ID=$(id -g ${USER}) \
+    --build-arg USER_ID=$(id -u ${USER}) \
+    --build-arg USER_NAME=${USER} \
+    -t qt_introductory_course \
+    .
 
-    docker run \
-        -u ${USER} \
-        --rm=true \
-        -v ${DIR_DEPLOY}:/deploy/ \
-        qt_introductory_course \
-        cmake
+docker run \
+    -u ${USER} \
+    --rm=true \
+    -v ${DIR_DEPLOY}:/deploy/ \
+    qt_introductory_course \
+    cmake
+```
 
 
 #### Less Simple Instructions
@@ -43,7 +45,7 @@ In case you do not use docker to build this project you have to install
 
 - entrypoint.sh: make tests should execute tests
 - add documentation to add OPENWEATHERMAP_APPID
-- not happy with qwidget application
+- update qwidget application
 
 
 #### Thanks to
