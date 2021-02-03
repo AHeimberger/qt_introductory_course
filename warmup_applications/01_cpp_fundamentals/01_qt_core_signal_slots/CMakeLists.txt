@@ -8,7 +8,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD 14)  # required to use qOverload
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5Core)
+find_package(Qt5 COMPONENTS REQUIRED Core)
 
 add_executable(01_cpp_01_qt_core_signal_slots
     header.h
