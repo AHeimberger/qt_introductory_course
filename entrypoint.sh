@@ -20,8 +20,8 @@ elif [ ${#} == 1 ] && [ ${1} == "cmake" ]; then
         cmake "/source/"
     else
         echo "Local Execution"
-        export CMAKE_PREFIX_PATH=/opt/Qt/5.15.1/gcc_64
-        export QT_DIR=/opt/Qt/5.15.1/gcc_64/lib/cmake/Qt5
+        export CMAKE_PREFIX_PATH=/opt/Qt/5.15.0/gcc_64
+        export QT_DIR=/opt/Qt/5.15.0/gcc_64/lib/cmake/Qt5
         rm -rf "deploy"
         mkdir "deploy"
         cd "deploy"
