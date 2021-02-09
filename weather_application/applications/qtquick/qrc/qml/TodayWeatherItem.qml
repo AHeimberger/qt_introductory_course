@@ -20,7 +20,7 @@ Rectangle {
         id: weatherItem
         anchors.centerIn: parent
         columns: 2; columnSpacing: 0
-        rows: 2; rowSpacing: 0
+        rows: 3; rowSpacing: 0
 
         Column {
             Text {
