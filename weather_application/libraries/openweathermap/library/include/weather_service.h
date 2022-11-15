@@ -37,7 +37,6 @@ private:
 
     QNetworkAccessManager *_manager = nullptr;
     QNetworkReply* _reply_current_weather = nullptr;
-    QNetworkReply* _reply_current_weathers = nullptr;
     QNetworkReply* _reply_current_and_forecast_weathers = nullptr;
 
     OpenWeatherMap::Replies::Data::CurrentWeather _weather;
